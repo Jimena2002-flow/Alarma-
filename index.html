@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jota&Jota</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #df103d;
+      color: white;
+      padding: 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    button {
+      background: #e0128a;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #dd3e7b;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📱Ahora estare dentro de tu celular </h1>
+    <p>Cada vez que te extrañe te llegara un aviso</p>
+  </header>
+
+  <main>
+    <h2>Opciones</h2>
+    <button id="notificar">🔔 Mostrar aviso inmediato</button>
+    <button id="programar">⏰ Programar aviso a los 10s</button>
+  </main>
+
+  <footer>
+    <p>Desarrollado por Jimena Flores 🌱</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
