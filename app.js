@@ -4,6 +4,12 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker registrado"));
 }
 
+// Registrar el Service Worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker registrado"));
+}
+
 // Función para mostrar notificación
 function mostrarAviso(titulo, mensaje) {
   if (Notification.permission === "granted") {
@@ -14,26 +20,14 @@ function mostrarAviso(titulo, mensaje) {
   }
 }
 
-// Pedir permiso de notificación al cargar la app
+// Pedir permiso al cargar la app
 Notification.requestPermission().then(permiso => {
   if (permiso !== "granted") {
     alert("Debes permitir notificaciones para que funcionen los avisos.");
   }
 });
 
-// Aviso manual con botón
-document.getElementById("notificar").addEventListener("click", () => {
-  mostrarAviso("🔔 Aviso inmediato", "Este es un recordatorio desde tu PWA");
-});
-
-// Aviso programado a los 10s (botón de prueba)
-document.getElementById("programar").addEventListener("click", () => {
-  setTimeout(() => {
-    mostrarAviso("⏰ Aviso programado", "Han pasado 10 segundos desde que pulsaste el botón");
-  }, 10000);
-});
-
-// Avisos automáticos a las 6:00 am y 1:00 pm (hora local del móvil)
+// Función para programar alarmas por hora
 function programarAviso(hora, minuto, mensaje) {
   setInterval(() => {
     const ahora = new Date();
@@ -47,6 +41,18 @@ function programarAviso(hora, minuto, mensaje) {
   }, 1000); // revisa cada segundo
 }
 
-// Programar horarios (hora local del móvil)
-programarAviso(6, 0, "Buenos días ☀️ ¡Empieza tu día con energía!");
-programarAviso(13, 0, "Es la 1:00 PM 🍴 Hora de almorzar y pensar en mí 💕");
+// 🔔 Alarmas automáticas (hora local del móvil)
+programarAviso(6, 0, "Buenos días ☀️ ¡Empieza tu día conmigo en mente!");
+programarAviso(13, 0, "Ya es la 1:00 PM 🍴 Hora de almorzar y pensar en mí 💕");
+
+// ----------------------------------
+// Opciones de prueba manual (opcionales)
+document.getElementById("notificar").addEventListener("click", () => {
+  mostrarAviso("🔔 Aviso inmediato", "Este es un recordatorio manual de prueba");
+});
+
+document.getElementById("programar").addEventListener("click", () => {
+  setTimeout(() => {
+    mostrarAviso("⏰ Aviso de prueba", "Han pasado 10 segundos desde que pulsaste");
+  }, 10000);
+});
