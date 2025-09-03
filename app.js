@@ -9,7 +9,7 @@ function mostrarAviso(titulo, mensaje) {
   if (Notification.permission === "granted") {
     new Notification(titulo, {
       body: mensaje,
-      icon: "png"
+      icon: "icon-192.png"
     });
   }
 }
@@ -21,25 +21,32 @@ Notification.requestPermission().then(permiso => {
   }
 });
 
-// Aviso manual (con botón)
+// Aviso manual con botón
 document.getElementById("notificar").addEventListener("click", () => {
-  mostrarAviso("🔔 Aviso Local", "Este es un recordatorio desde donde está Jimena Flores");
+  mostrarAviso("🔔 Aviso inmediato", "Este es un recordatorio desde tu PWA");
 });
 
-// Aviso programado cada 30 segundos
-setInterval(() => {
-  mostrarAviso("⏰ Recordatorio", "Este aviso aparece cada 30 segundos");
-}, 30000);
+// Aviso programado a los 10s (botón de prueba)
+document.getElementById("programar").addEventListener("click", () => {
+  setTimeout(() => {
+    mostrarAviso("⏰ Aviso programado", "Han pasado 10 segundos desde que pulsaste el botón");
+  }, 10000);
+});
 
-// Aviso en una hora específica (ej: 14:30)
-function programarAviso(hora, minuto) {
+// Avisos automáticos a las 6:00 am y 1:00 pm (hora local del móvil)
+function programarAviso(hora, minuto, mensaje) {
   setInterval(() => {
     const ahora = new Date();
-    if (ahora.getHours() === hora && ahora.getMinutes() === minuto && ahora.getSeconds() === 0) {
-      mostrarAviso("📌 Aviso programado", `Son las ${hora}:${minuto < 10 ? "0"+minuto : minuto}`);
+    if (
+      ahora.getHours() === hora &&
+      ahora.getMinutes() === minuto &&
+      ahora.getSeconds() === 0
+    ) {
+      mostrarAviso("📌 Recordatorio", mensaje);
     }
-  }, 1000);
+  }, 1000); // revisa cada segundo
 }
 
-// Ejemplo: aviso todos los días a las 14:30
-programarAviso(14, 30);
+// Programar horarios (hora local del móvil)
+programarAviso(6, 0, "Buenos días ☀️ ¡Empieza tu día con energía!");
+programarAviso(13, 0, "Es la 1:00 PM 🍴 Hora de almorzar y pensar en mí 💕");
