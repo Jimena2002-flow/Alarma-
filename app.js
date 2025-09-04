@@ -6,6 +6,7 @@
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyCD9cQ5DIy5GLAgpjSFy9ouNlDXRY97MWs",
     authDomain: "alarma-jotajota.firebaseapp.com",
@@ -22,21 +23,21 @@
 
 // === 2) Registrar service workers ===
 // (a) SW de caché/opcional para PWA (si no lo tienes, puedes omitir este registro)
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js").catch(()=>{});
-}
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+  }
 
 // (b) SW especial de Firebase Messaging (clave)
-const swReg = await navigator.serviceWorker.register("firebase-messaging-sw.js");
+  const swReg = await navigator.serviceWorker.register("firebase-messaging-sw.js");
 
-// === 3) Mensajería ===
-const statusEl = document.getElementById("status");
-const tokenBox = document.getElementById("tokenBox");
-const tokenText = document.getElementById("tokenText");
-const copyBtn   = document.getElementById("copyToken");
-const testLocal = document.getElementById("testLocal");
+  // === 3) Mensajería ===
+  const statusEl = document.getElementById("status");
+  const tokenBox = document.getElementById("tokenBox");
+  const tokenText = document.getElementById("tokenText");
+  const copyBtn   = document.getElementById("copyToken");
+  const testLocal = document.getElementById("testLocal");
 
-async function initMessaging() {
+  async function initMessaging() {
   const supported = await isSupported();
   if (!supported) {
     statusEl.textContent = "Tu navegador no soporta Web Push 😢";
@@ -58,7 +59,7 @@ async function initMessaging() {
   // Obtén token del dispositivo (usa VAPID PUBLIC KEY de Firebase)
   try {
     const token = await getToken(messaging, {
-      vapidKey: "TU_VAPID_KEY",
+      vapidKey: "3HUZU6huVKEom2W8A6PeBXC6PxnSfEYXYn4LGiggKWk",
       serviceWorkerRegistration: swReg
     });
 

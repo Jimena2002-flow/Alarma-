@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jota&Jota 💖</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ff4d6d" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #ffe6eb, #fff7fa);
-      margin: 0;
-      padding: 0;
-      color: #444;
+    body{
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+      margin:0; padding:0; text-align:center; color:#444;
+      background:linear-gradient(135deg,#ffe6eb,#fff7fa);
+      display:flex; min-height:100vh; flex-direction:column;
     }
-
-    header {
-      background: #ff4d6d;
-      color: white;
-      padding: 25px;
-      border-radius: 0 0 30px 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    header{
+      background:#ff4d6d; color:#fff; padding:24px 16px;
+      border-radius:0 0 28px 28px; box-shadow:0 8px 32px rgba(255,77,109,.35);
     }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
+    h1{ margin:0 0 6px; font-size:1.9rem }
+    main{ flex:1; padding:28px 18px }
+    .card{
+      max-width:680px; margin:0 auto; background:#fff; border-radius:20px;
+      box-shadow:0 10px 28px rgba(0,0,0,.08); padding:22px;
     }
-
-    main {
-      padding: 30px;
+    .muted{ color:#777; font-size:.95rem }
+    .status{ margin-top:18px; word-break:break-all; font-size:.9rem }
+    .token{ padding:12px; background:#f9f0f3; border-radius:10px; font-family:monospace }
+    button{
+      background:#ff7aa2; color:#fff; border:0; padding:12px 18px; margin:8px;
+      border-radius:14px; font-size:1rem; cursor:pointer; transition:.2s;
+      box-shadow:0 6px 18px rgba(255,122,162,.35);
     }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #666;
-    }
+    button:hover{ background:#ff4d6d; transform:translateY(-1px) }
+    footer{ padding:18px; color:#666 }
   </style>
 </head>
 <body>
   <header>
-    <h1>💌 Siempre contigo 💌</h1>
-    <p>Cada día recibirás mis mensajes de amor 💕</p>
+    <h1>💌 Siempre contigo</h1>
+    <p>Te llegarán mis mensajitos aunque la app esté cerrada 💕</p>
   </header>
 
   <main>
-    <h2>App instalada en tu corazón 💖</h2>
-    <p>No necesitas hacer nada, yo me encargo de recordarte cuánto te quiero.</p>
+    <div class="card">
+      <p class="muted">Instala la app, acepta notificaciones y listo.</p>
+      <div class="status" id="status">Inicializando…</div>
+      <div class="status" id="tokenBox" style="display:none;">
+        <p class="muted">Token (solo para pruebas, mantenlo privado):</p>
+        <div class="token" id="tokenText"></div>
+        <button id="copyToken">Copiar token</button>
+      </div>
+      <div style="margin-top:14px">
+        <button id="testLocal">Probar aviso local</button>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <p>Hecho con amor por Jimena 🌹</p>
-  </footer>
+  <footer>Hecho con amor por Jimena 🌹</footer>
 
-  <script src="app.js"></script>
+  <!-- IMPORTANTE: type="module" para usar imports de Firebase -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
