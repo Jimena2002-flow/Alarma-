@@ -47,7 +47,7 @@ async function initApp() {
   // Obtener token FCM
   try {
     const token = await getToken(messaging, {
-      vapidKey: "3HUZU6huVKEom2W8A6PeBXC6PxnSfEYXYn4LGiggKWk",
+      vapidKey: "BJial8-NF5zB9onQ3T_In-sN5FB_HhzLxmbHzF1QRcepuGvLROhUyBbsfVmnKLdWEg5TtFNONDFdfuwXLib9efY",
       serviceWorkerRegistration: swReg
     });
 

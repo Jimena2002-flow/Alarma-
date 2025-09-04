@@ -1,7 +1,7 @@
 {
   "name": "Jota&Jota",
   "short_name": "J&J",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff4d6d",
@@ -10,3 +10,4 @@
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
   ]
 }
+
