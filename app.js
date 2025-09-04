@@ -1,26 +1,24 @@
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCD9cQ5DIy5GLAgpjSFy9ouNlDXRY97MWs",
-    authDomain: "alarma-jotajota.firebaseapp.com",
-    projectId: "alarma-jotajota",
-    storageBucket: "alarma-jotajota.firebasestorage.app",
-    messagingSenderId: "1005649915289",
-    appId: "1:1005649915289:web:812277d4995e715f943708",
-    measurementId: "G-S937T4RR65"
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCD9cQ5DIy5GLAgpjSFy9ouNlDXRY97MWs",
+  authDomain: "alarma-jotajota.firebaseapp.com",
+  projectId: "alarma-jotajota",
+  storageBucket: "alarma-jotajota.firebasestorage.app",
+  messagingSenderId: "1005649915289",
+  appId: "1:1005649915289:web:812277d4995e715f943708",
+  measurementId: "G-S937T4RR65"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 // === 2) Registrar service workers ===
 // (a) SW de caché/opcional para PWA (si no lo tienes, puedes omitir este registro)
   if ("serviceWorker" in navigator) {
@@ -38,23 +36,23 @@
   const testLocal = document.getElementById("testLocal");
 
   async function initMessaging() {
-  const supported = await isSupported();
-  if (!supported) {
-    statusEl.textContent = "Tu navegador no soporta Web Push 😢";
-    return;
-  }
+    const supported = await isSupported();
+    if (!supported) {
+      statusEl.textContent = "Tu navegador no soporta Web Push 😢";
+      return;
+    }
 
-  const messaging = getMessaging(app);
+    const messaging = getMessaging(app);
 
-  // Pide permiso
-  let perm = Notification.permission;
-  if (perm !== "granted") {
-    perm = await Notification.requestPermission();
-  }
-  if (perm !== "granted") {
-    statusEl.textContent = "Permiso de notificaciones DENEGADO 🚫";
-    return;
-  }
+    // Pide permiso
+    let perm = Notification.permission;
+    if (perm !== "granted") {
+      perm = await Notification.requestPermission();
+    }
+    if (perm !== "granted") {
+      statusEl.textContent = "Permiso de notificaciones DENEGADO 🚫";
+      return;
+    }
 
   // Obtén token del dispositivo (usa VAPID PUBLIC KEY de Firebase)
   try {
