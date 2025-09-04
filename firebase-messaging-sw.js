@@ -15,6 +15,7 @@ const messaging = firebase.messaging();
 
 // Notificaciones cuando la app está cerrada / background:
 messaging.onBackgroundMessage((payload) => {
+  console.log("Background message:", payload);
   const { title, body } = payload.notification || {};
   self.registration.showNotification(title || "Mensaje 💌", {
     body: body || "",
